@@ -46,8 +46,8 @@ jobs:
       - name: Setup BingRewards
         run: |
           python BingRewards/setup.py \
-          -gssi ${{ secrets.GOOGLE_SHEETS_SHEET_ID }} \
-          -gstn ${{ secrets.GOOGLE_SHEETS_TAB_NAME }} \
+          # -gssi ${{ secrets.GOOGLE_SHEETS_SHEET_ID }} \
+          # -gstn ${{ secrets.GOOGLE_SHEETS_TAB_NAME }} \
           -ta   ${{ secrets.TELEGRAM_API_TOKEN }}     \
           -tu   ${{ secrets.TELEGRAM_USERID }}        
       - name: Set Secrets
