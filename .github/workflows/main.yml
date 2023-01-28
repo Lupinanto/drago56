@@ -32,7 +32,7 @@ jobs:
         uses: actions/checkout@v3 # checkout the repository content to github runner.
 
       - name: Setup Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: 3.9 #install the python needed
 
@@ -58,8 +58,8 @@ jobs:
           the_pass=$(jq '.[] | select(.id=="${{ matrix.account.the_id }}") | .pass' originalData.json)
           echo "::add-mask::$the_user"
           echo "::add-mask::$the_pass"
-          echo "::set-output name=secret-user::$the_user"
-          echo "::set-output name=secret-pass::$the_pass"
+          echo "secret-user=$the_user" >> $GITHUB_OUTPUT
+          echo "secret-pass=$the_pass" >> $GITHUB_OUTPUT
           rm -f originalData.json
           unset the_user
           unset the_pass
