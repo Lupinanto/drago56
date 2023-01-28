@@ -58,8 +58,8 @@ jobs:
           the_pass=$(jq '.[] | select(.id=="${{ matrix.account.the_id }}") | .pass' originalData.json)
           echo "::add-mask::$the_user"
           echo "::add-mask::$the_pass"
-          echo "secret-user=$the_user"
-          echo "secret-pass=$the_pass"
+          echo "::set-output name=secret-user::$the_user"
+          echo "::set-output name=secret-pass::$the_pass"
           rm -f originalData.json
           unset the_user
           unset the_pass
