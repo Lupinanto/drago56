@@ -46,8 +46,6 @@ jobs:
       - name: Setup BingRewards
         run: |
           python BingRewards/setup.py \
-          # -gssi ${{ secrets.GOOGLE_SHEETS_SHEET_ID }} \
-          # -gstn ${{ secrets.GOOGLE_SHEETS_TAB_NAME }} \
           -ta   ${{ secrets.TELEGRAM_API_TOKEN }}     \
           -tu   ${{ secrets.TELEGRAM_USERID }}        
       - name: Set Secrets
@@ -67,8 +65,8 @@ jobs:
           unset the_pass
           
           # GOOGLE_SHEETS configuration
-          echo $(echo ${{ secrets.GOOGLE_SHEETS_CREDENTIALS_B64 }} | base64 --decode) > BingRewards/config/google_sheets_credentials.json
-          echo $(echo ${{ secrets.GOOGLE_SHEETS_TOKEN_B64 }} | base64 --decode) > BingRewards/config/google_sheets_token.json
+          # echo $(echo ${{ secrets.GOOGLE_SHEETS_CREDENTIALS_B64 }} | base64 --decode) > BingRewards/config/google_sheets_credentials.json
+          # echo $(echo ${{ secrets.GOOGLE_SHEETS_TOKEN_B64 }} | base64 --decode) > BingRewards/config/google_sheets_token.json
           
       - name: Run BingRewards for Account ${{ matrix.account.the_id }}
         run: |
